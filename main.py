@@ -1,5 +1,5 @@
 # 6 EASY STEPS TO CREATE A VIRTUAL MOUSE
-# step1 = Opening Camera
+#1 Opening the Camera
 import cv2
 import mediapipe as mp
 import pyautogui
@@ -21,12 +21,12 @@ while True:
     output = hand_detector.process(rgb_frame)
     hands = output.multi_hand_landmarks
 
-    # our hand contains 21 points over thumbs , index , middle , ring and pinky fingers
+    # our hand contains 21 points over thumbs , index , middle , ring and pinky fingers (for more clarification , goto the readme file)
     if hands:
         for hand in hands:  # iteration step
             drawing_utils.draw_landmarks(frame, hand)
 
-            # STEP - 3 = Iterating landmarks on our hand
+            #3 = Iterating landmarks on our hand
             landmarks = hand.landmark
             for id, landmark in enumerate(landmarks):
                 x = int(landmark.x * frame_width)
@@ -40,7 +40,7 @@ while True:
                     index_x = screen_width / frame_width * x
                     index_y = screen_height / frame_height * y
 
-                    # Step4 = Move your finger here n there to check if your cursor moves or not
+                    #4 Move your finger here n there to check if your cursor moves or not
                     pyautogui.moveTo(index_x, index_y)
                     # after executing above line it'll only be limited to some space not
                     # on your whole laptop screen because of the frames
